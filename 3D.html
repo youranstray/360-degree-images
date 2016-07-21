@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css" media="screen">
+		li{list-style: none;}
+		*{margin:0;padding: 0;}
+		ul{
+			position: relative;
+			width:200px;
+			margin:100px auto;
+			/* transform-style: preserve-3d;
+			transform:perspective(800px) rotateX(0deg) rotateY(0deg); */
+		}
+		li{
+			position: absolute;
+			top:0;
+			left:0;
+			width:100%;
+			transition: 1s all ease;
+			display: none;
+		}
+		img{
+			display: block;
+			width:100%;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var aLi=document.getElementsByTagName("li");
+			var oUl=document.getElementsByTagName("ul")[0];
+			var n=0;
+			oUl.onmousedown = function(e) {
+				var oEvt = e || event;
+				var X=oEvt.clientX;
+				document.onmousemove = function(e) {
+					var oEvt = e || event;
+					event.preventDefault();
+					var X1=oEvt.clientX;
+					if (X1-X>20) {
+						X=X1;
+						n++;
+					}
+					if (X1-X<-20) {
+						X=X1;
+						n--;
+					}
+					for (var i = 0; i < aLi.length; i++) {
+						aLi[i].style.display="none";
+					}
+					console.log(n)
+					if(n == aLi.length){
+						n=0;	
+					} 
+					if (n==-1) {
+						n=aLi.length-1
+					} 
+					aLi[n].style.display="block";
+				}
+				document.onmouseup = function() {
+					event.preventDefault();
+					document.onmousemove = null;
+					document.onmouseup = null;
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li style="display:block;">
+			<img src="ARG30644/921917.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921917.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921919.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921918.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921903.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921904.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921895.png" alt="">
+		</li>
+		<li>
+			<img src="ARG30644/921892.png" alt="">
+		</li>
+	</ul>
+</body>
+</html>
